@@ -1,29 +1,46 @@
-% Hoja de una sola página para subir al SGA (condición P1). No se sube ningún otro archivo.
+% Hoja de una sola página para subir al SGA (condición P1).
+% Usa los logos de ../FORM-TL-01/figuras; en Overleaf, sube esa carpeta "figuras" junto a este archivo.
 \documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
-\usepackage[a4paper,margin=2.5cm]{geometry}
-\usepackage{xcolor}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{graphicx}
 \usepackage{url}
-\newcommand{\pend}[1]{\textcolor{red}{[#1]}}
+\graphicspath{{figuras/}{../FORM-TL-01/figuras/}}
 \pagestyle{empty}
 
 \begin{document}
 \begin{center}
-	{\large\bfseries Universidad Técnica Estatal de Quevedo}\\[2pt]
-	Ingeniería de Requerimientos (ISR-401) · Paralelo B
+	\begin{minipage}[c]{0.22\textwidth}\centering
+		\includegraphics[height=3.4cm]{logo-uteq.png}
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.52\textwidth}\centering
+		{\large\bfseries UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO}\\[6pt]
+		Facultad de Ciencias de la Computación\\
+		Carrera de Software
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.22\textwidth}\centering
+		\includegraphics[height=3.4cm]{logo-fcc.png}
+	\end{minipage}
+
+	\vspace*{\fill}
+	{\large Asignatura: Ingeniería de Requerimientos (ISR-401)}\\[18pt]
+	{\LARGE\bfseries FORM-TL-01\\[6pt] Taller de tipos de requisitos}\\[10pt]
+	{\normalsize Actividad formativa}
+	\vspace*{\fill}
+
+	{\large Estudiante: Vélez Vinces Jostin Gustavo}\\[8pt]
+	Cuarto nivel $\cdot$ Paralelo B\\[8pt]
+	Docente: Ing. Gleiston Cicerón Guerrero Ulloa, PhD\\[8pt]
+	Período académico 2026--2027 SPA\\[8pt]
+	\textbf{Fecha límite de entrega:} sábado 31 de octubre de 2026, 23:59
+	\vspace*{\fill}
+
+	\textbf{Repositorio:}\\[4pt]
+	{\small\url{https://github.com/jvelezv10-glitch/ISR401-VelezJostin}}
+	\vspace*{\fill}
+
+	Quevedo, 31 de octubre de 2026
 \end{center}
-
-\vspace{1cm}
-\begin{tabular}{@{}ll@{}}
-	\textbf{Estudiante:} & Vélez Vinces Jostin Gustavo \\
-	\textbf{Tarea:} & FORM-TL-01 · Taller de tipos de requisitos \\
-	\textbf{Fecha límite de entrega:} & sábado 31 de octubre de 2026, 23:59 \\
-\end{tabular}
-
-\vspace{1cm}
-\textbf{Repositorio:}\\[4pt]
-{\small\url{https://github.com/USUARIO/ISR401-VelezJostin}}
-% Cambia USUARIO por tu usuario institucional de GitHub y comprueba que la URL quede en una sola línea.
 \end{document}
