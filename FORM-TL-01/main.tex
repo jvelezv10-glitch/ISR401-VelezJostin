@@ -1,0 +1,112 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands,es-nodecimaldot]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+
+\renewcommand{\arraystretch}{1.25}
+
+\begin{document}
+
+% ------------------------------------------------------------------
+% Carátula
+% ------------------------------------------------------------------
+\begin{titlepage}
+	\centering
+	\begin{minipage}[c]{0.22\textwidth}\centering
+		\includegraphics[height=3.4cm]{figuras/logo-uteq.png}
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.52\textwidth}\centering
+		{\large\bfseries UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO}\\[6pt]
+		Facultad de Ciencias de la Computación\\
+		Carrera de Software
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.22\textwidth}\centering
+		\includegraphics[height=3.4cm]{figuras/logo-fcc.png}
+	\end{minipage}
+
+	\vspace*{\fill}
+	{\large Asignatura: Ingeniería de Requerimientos (ISR-401)}\\[18pt]
+	{\LARGE\bfseries FORM-TL-01\\[6pt] Taller de tipos de requisitos}\\[10pt]
+	{\normalsize Actividad formativa}
+	\vspace*{\fill}
+
+	{\large Estudiante: Vélez Vinces Jostin Gustavo}\\[8pt]
+	Cuarto nivel $\cdot$ Paralelo B\\[8pt]
+	Docente: Ing. Gleiston Cicerón Guerrero Ulloa, PhD\\[8pt]
+	Período académico 2026--2027 SPA
+	\vspace*{\fill}
+
+	Quevedo, 31 de octubre de 2026
+\end{titlepage}
+
+% ------------------------------------------------------------------
+\section{Clasificación de los enunciados}
+% ------------------------------------------------------------------
+Caso: Plataforma de gestión de citas médicas del Policlínico Ribera del Quevedo. Cada enunciado se clasifica por tipo (funcional, calidad con su característica de ISO/IEC 25010:2023 \cite{iso25010} o restricción), por ámbito (producto o proceso) y por nivel (sistema o software), según los conceptos de \cite{pohl2025} e \cite{iso29148}.
+
+{\small
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.7cm}|>{\raggedright\arraybackslash}p{3.9cm}|>{\raggedright\arraybackslash}p{2.6cm}|>{\raggedright\arraybackslash}p{1.4cm}|>{\raggedright\arraybackslash}p{1.4cm}|>{\raggedright\arraybackslash}p{4.3cm}|}
+\hline
+\textbf{Cód.} & \textbf{Enunciado} & \textbf{Tipo} & \textbf{Ámbito} & \textbf{Nivel} & \textbf{Justificación} \\ \hline
+\endhead
+E01 & El paciente podrá reservar una cita eligiendo especialidad, médico, fecha y hora entre los horarios disponibles. & Funcional & Producto & Software & Permite que el paciente seleccione los datos necesarios para agendar una cita. \\ \hline
+E02 & La plataforma enviará al paciente un recordatorio por mensaje de texto 24 horas antes de su cita. & Funcional & Producto & Sistema& El sistema envía automáticamente un recordatorio al paciente antes de su cita. \\ \hline
+E03 & La aplicación debe ser rápida. & Calidad (Eficiencia de desempeño - Comportamiento temporal)& Producto & Software & Indica que la aplicación debe responder rápidamente a las acciones del usuario. \\ \hline
+E04 & El recepcionista podrá registrar la llegada del paciente que se acerca a la ventanilla. & Funcional & Producto & Software & Permite que el recepcionista registre cuándo un paciente llega al policlínico. \\ \hline
+E05 & La plataforma se desarrollará en Java 21 con base de datos PostgreSQL, tecnologías que domina el área de TI. & Restricción & Producto & Software & Establece qué tecnologías se utilizarán para desarrollar el sistema. \\ \hline
+E06 & El médico podrá consultar la lista de pacientes del día y marcar cada consulta como atendida. & Funcional & Producto & Software & Permite al médico revisar sus pacientes del día y actualizar el estado de las consultas. \\ \hline
+E07 & Los datos de salud de los pacientes deben estar seguros. & Calidad (Seguridad - Confidencialidad)& Producto & Software & Busca proteger la información personal y médica de los pacientes. \\ \hline
+E08 & La aplicación móvil debe funcionar en teléfonos con Android 10 o superior. & Restricción & Producto & Software & Indica en qué versiones de Android debe funcionar la aplicación. \\ \hline
+E09 & Una cita cancelada con menos de cuatro horas de anticipación se registrará como inasistencia. & Funcional & Producto & Software & Establece una regla que el sistema debe cumplir cuando una cita se cancela fuera del tiempo permitido. \\ \hline
+E10 & La plataforma debe ser fácil de usar para los pacientes adultos mayores. & Calidad (Capacidad de interacción - Inclusividad)& Producto & Software & Busca que los adultos mayores puedan utilizar la aplicación sin dificultades. \\ \hline
+E11 & El proyecto debe entregarse en un plazo máximo de seis meses. & Restricción & Proceso & N/A& Establece el tiempo máximo que tendrá el equipo para terminar el proyecto. \\ \hline
+E12 & La sesión de un usuario se cerrará automáticamente tras 10 minutos sin actividad. & Funcional & Producto & Software & Indica que el sistema debe cerrar automáticamente la sesión cuando el usuario deja de utilizarla durante cierto tiempo. \\ \hline
+E13 & El quiosco de la sala de espera leerá el número de cédula ingresado en su pantalla táctil e imprimirá un ticket con el número de turno. & Funcional & Producto & Sistema & Permite que el paciente utilice el quiosco para ingresar sus datos y recibir su turno impreso. \\ \hline
+E14 & La plataforma debe estar siempre disponible. & Calidad (Fiabilidad - Disponibilidad) & Producto & Sistema & Busca que la plataforma esté disponible para los usuarios durante el tiempo que necesiten utilizarla. \\ \hline
+E15 & El director médico podrá generar un reporte mensual de inasistencias por especialidad. & Funcional & Producto & Software & Permite al director consultar información sobre las inasistencias de los pacientes mediante reportes. \\ \hline
+E16 & Cada incremento se validará con el director médico al final de cada iteración de dos semanas. & Restricción & Proceso & N/A& Establece que cada avance del proyecto debe ser revisado por el director médico cada dos semanas. \\ \hline
+E17 & El tratamiento de los datos personales de los pacientes debe cumplir la Ley Orgánica de Protección de Datos Personales del Ecuador. & Restricción & Producto & Sistema & Exige que el sistema respete las leyes ecuatorianas relacionadas con la protección de datos personales. \\ \hline
+E18 & La plataforma debe integrarse sin problemas con el sistema de facturación actual. & Calidad (Compatibilidad - Interoperabilidad) & Producto & Software & Indica que la plataforma debe poder comunicarse correctamente con el sistema de facturación existente. \\ \hline
+E19 & Si el servidor principal falla, la plataforma debe restablecer el servicio en menos de 30 minutos sin perder ninguna cita confirmada. & Calidad (Fiabilidad - Recuperabilidad) & Producto & Sistema & Establece cuánto tiempo debe tardar el sistema en recuperarse ante una falla y garantiza que no se pierdan las citas confirmadas. \\ \hline
+E20 & Todo cambio en el código fuente será revisado por otro integrante del equipo antes de integrarse a la rama principal. & Restricción & Proceso & N/A& Indica que los cambios realizados en el código deben ser revisados por otro integrante antes de incorporarlos al proyecto. \\ \hline
+\end{longtable}
+}
+
+% ------------------------------------------------------------------
+\section{Requisitos de calidad cuantificados}
+% ------------------------------------------------------------------
+{\small
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.7cm}|>{\raggedright\arraybackslash}p{3.0cm}|>{\raggedright\arraybackslash}p{6.6cm}|>{\raggedright\arraybackslash}p{4.4cm}|}
+\hline
+\textbf{Cód.} & \textbf{Enunciado vago} & \textbf{Requisito cuantificado} & \textbf{Métrica $\cdot$ unidad $\cdot$ umbral} \\ \hline
+\endhead
+E03 & La aplicación debe ser rápida. & La plataforma deberá responder a las consultas de disponibilidad de citas en un tiempo máximo de 3 segundos en al menos el 95 \% de las consultas, con 300 usuarios conectados simultáneamente. & Métrica: tiempo de respuesta\newline Unidad: segundos\newline Umbral: $\leq$ 3 s en $\geq$ 95 \% de las consultas (300 usuarios simultáneos) \\ \hline
+E07 & Los datos de salud de los pacientes deben estar seguros. & La plataforma deberá cifrar el 100 \% de los datos de salud y datos personales de los pacientes durante su almacenamiento, usando como mínimo AES-256, y durante su transmisión, usando como mínimo TLS 1.2. & Métrica: porcentaje de datos sensibles cifrados\newline Unidad: \% de los datos\newline Umbral: 100 \% (AES-256 almacenados, TLS $\geq$ 1.2 en transmisión) \\ \hline
+E10 & La plataforma debe ser fácil de usar para los pacientes adultos mayores. & La aplicación deberá permitir que al menos el 90 \% de los pacientes mayores de 60 años complete la reserva de una cita en un máximo de 3 minutos, sin ayuda externa, medido en una prueba con usuarios de ese grupo. & Métrica: tasa de éxito en la reserva sin ayuda\newline Unidad: \% de usuarios y minutos\newline Umbral: $\geq$ 90 \% de mayores de 60 años en $\leq$ 3 min \\ \hline
+E14 & La plataforma debe estar siempre disponible. & La plataforma deberá mantener una disponibilidad mínima del 99,5 \% mensual durante el horario de atención del policlínico (lunes a sábado, de 07:00 a 19:00). & Métrica: disponibilidad\newline Unidad: \% del tiempo mensual\newline Umbral: $\geq$ 99,5 \% (lun–sáb, 07:00–19:00) \\ \hline
+E18 & La plataforma debe integrarse sin problemas con el sistema de facturación actual. & La integración con el sistema de facturación deberá registrar correctamente al menos el 99 \% de las solicitudes de cobro en un máximo de 5 segundos, y las que fallen deberán reintentarse automáticamente hasta 3 veces y, si siguen fallando, notificarse al administrador para su registro manual. & Métrica: tasa de cobros registrados correctamente y tiempo de respuesta\newline Unidad: \% de solicitudes y segundos\newline Umbral: $\geq$ 99 \% en $\leq$ 5 s; los fallidos se reintentan hasta 3 veces y se notifican al administrador \\ \hline
+\end{longtable}
+}
+
+% ------------------------------------------------------------------
+\section{Declaración de uso de inteligencia artificial}
+% ------------------------------------------------------------------
+\begin{description}
+	\item[Herramienta:] Claude, asistente de inteligencia artificial de Anthropic.
+	\item[Versión:] Claude Opus 5.5.
+	\item[Propósito:] crear la estructura del repositorio, el archivo README.md y la plantilla del documento; revisar mis respuestas y señalarme los errores para que yo los corrigiera; sugerir valores de referencia, a partir de los datos del caso, para los requisitos cuantificados (el porcentaje del 95~\%, los estándares AES-256 y TLS~1.2, y las opciones para manejar los cobros fallidos), que revisé y elegí; corregir la ortografía; y convertir el documento de Word a \LaTeX{} y compilarlo.
+	\item[Cómo verifiqué lo obtenido:] comparé cada clasificación y cada valor con los datos del caso del Policlínico Ribera del Quevedo y con las definiciones de las referencias \cite{pohl2025, iso29148, iso25010}, y revisé el PDF compilado antes de subirlo.
+\end{description}
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}
