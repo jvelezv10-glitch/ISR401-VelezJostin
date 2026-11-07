@@ -44,7 +44,7 @@
 	Período académico 2026--2027 SPA
 	\vspace*{\fill}
 
-	Quevedo, 31 de octubre de 2026
+	Quevedo, 7 de noviembre de 2026
 \end{titlepage}
 
 % ------------------------------------------------------------------
@@ -97,12 +97,32 @@ E18 & La plataforma debe integrarse sin problemas con el sistema de facturación
 }
 
 % ------------------------------------------------------------------
+\section{Discrepancias con un compañero}
+% ------------------------------------------------------------------
+Compañero con quien se compararon las respuestas: José Ricardo Nivela Saavedra.
+
+{\small
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.7cm}|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{7.6cm}|}
+\hline
+\textbf{Cód.} & \textbf{Mi respuesta} & \textbf{Respuesta del compañero} & \textbf{Resolución y argumento} \\ \hline
+\endhead
+E02 & Nivel: Sistema & Nivel: Software & Ambos acordamos mantener Sistema, ya que el envío automático de SMS puede involucrar tanto el funcionamiento de la aplicación como su comunicación con un proveedor externo de mensajes.\\ \hline
+E03 & Eficiencia de desempeño - Comportamiento temporal & Eficiencia de desempeño & Acordamos mantener comportamiento temporal, debido a que el requisito se relaciona directamente con la velocidad de respuesta de la aplicación frente a las acciones del usuario. \\ \hline
+E07 & Seguridad - Confidencialidad & Seguridad & Los dos acordamos la confidencialidad como clasificación más específica, porque la protección de la información médica implica evitar que personas no autorizadas accedan a los datos de los pacientes. \\ \hline
+E10 & Capacidad de interacción - Inclusividad & Usabilidad / Capacidad de interacción & Acordamos mantener inclusividad, debido a que la plataforma debe facilitar su utilización a los adultos mayores, tomando en cuenta sus características y necesidades.\\ \hline
+E11 & Nivel: N/A & Nivel: Software & Nos pusimos de acuerdo en conservar N/A, porque el tiempo máximo de entrega es una condición de planificación del proyecto y no define una característica del producto desarrollado. \\ \hline
+E16 & Nivel: N/A & Nivel: Sistema & Acordamos mantener N/A, ya que las revisiones con el director médico al finalizar cada iteración pertenecen a las actividades de validación del proyecto.\\ \hline
+E20 & Nivel: N/A & Nivel: Software & Se acordó conservar N/A, porque la revisión obligatoria de los cambios en el código establece una práctica de trabajo del equipo, sin representar una funcionalidad del producto. \\ \hline
+\end{longtable}
+}
+
+% ------------------------------------------------------------------
 \section{Declaración de uso de inteligencia artificial}
 % ------------------------------------------------------------------
 \begin{description}
 	\item[Herramienta:] Claude, asistente de inteligencia artificial de Anthropic.
 	\item[Versión:] Claude Opus 5.5.
-	\item[Propósito:] crear la estructura del repositorio, el archivo README.md y la plantilla del documento; revisar mis respuestas y señalarme los errores para que yo los corrigiera; sugerir valores de referencia, a partir de los datos del caso, para los requisitos cuantificados (el porcentaje del 95~\%, los estándares AES-256 y TLS~1.2, y las opciones para manejar los cobros fallidos), que revisé y elegí; corregir la ortografía; y convertir el documento de Word a \LaTeX{} y compilarlo.
+	\item[Propósito:] crear la estructura del repositorio, el archivo README.md y la plantilla del documento; revisar mis respuestas y señalarme los errores para que yo los corrigiera; sugerir valores de referencia, a partir de los datos del caso, para los requisitos cuantificados (el porcentaje del 95~\%, los estándares AES-256 y TLS~1.2, y las opciones para manejar los cobros fallidos), que revisé y elegí; listar las diferencias entre mi clasificación y la de mi compañero para preparar la discusión (las resoluciones las acordamos entre los dos); corregir la ortografía; y convertir el documento de Word a \LaTeX{} y compilarlo.
 	\item[Cómo verifiqué lo obtenido:] comparé cada clasificación y cada valor con los datos del caso del Policlínico Ribera del Quevedo y con las definiciones de las referencias \cite{pohl2025, iso29148, iso25010}, y revisé el PDF compilado antes de subirlo.
 \end{description}
 
