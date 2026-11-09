@@ -1,0 +1,199 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands,es-nodecimaldot,es-tabla]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\renewcommand{\arraystretch}{1.25}
+\graphicspath{{figuras/}}
+
+% Texto en rojo = lo que falta escribir. Al terminar no debe quedar ninguno.
+\newcommand{\pendiente}[1]{\textcolor{red}{[#1]}}
+
+% Inserta una captura; si la imagen aún no existe, muestra un recuadro para que el documento compile.
+\newcommand{\captura}[2]{%
+  \IfFileExists{figuras/#1}%
+    {\includegraphics[height=9cm]{#1}}%
+    {\fbox{\parbox[c][4cm][c]{6cm}{\centering\pendiente{falta figuras/#1}}}}%
+}
+
+\begin{document}
+
+% ------------------------------------------------------------------
+% Carátula
+% ------------------------------------------------------------------
+\begin{titlepage}
+	\centering
+	\begin{minipage}[c]{0.22\textwidth}\centering
+		\includegraphics[height=3.4cm]{logo-uteq.png}
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.52\textwidth}\centering
+		{\large\bfseries UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO}\\[6pt]
+		Facultad de Ciencias de la Computación\\
+		Carrera de Software
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.22\textwidth}\centering
+		\includegraphics[height=3.4cm]{logo-fcc.png}
+	\end{minipage}
+
+	\vspace*{\fill}
+	{\large Asignatura: Ingeniería de Requerimientos (ISR-401)}\\[18pt]
+	{\LARGE\bfseries TA-IND-01\\[6pt] IEEE 29148 y tipos de requisitos\\[4pt] de un sistema conocido}\\[10pt]
+	{\normalsize Trabajo autónomo individual (actividad sumativa)}
+	\vspace*{\fill}
+
+	{\large Estudiante: Vélez Vinces Jostin Gustavo}\\[8pt]
+	Cuarto nivel $\cdot$ Paralelo B\\[8pt]
+	Docente: Ing. Gleiston Cicerón Guerrero Ulloa, PhD\\[8pt]
+	Período académico 2026--2027 SPA
+	\vspace*{\fill}
+
+	Quevedo, 11 de noviembre de 2026
+\end{titlepage}
+
+% ------------------------------------------------------------------
+\section{Sistema elegido}
+% ------------------------------------------------------------------
+% Un párrafo: propósito, usuarios y contexto de la banca móvil de Banco Pichincha.
+\pendiente{Describir la aplicación de banca móvil de Banco Pichincha: para qué sirve, quiénes la usan y en qué contexto. Un párrafo.}
+
+% Capturas propias (mínimo 3). Guardarlas en figuras/ con estos nombres,
+% tapando número de cuenta, saldo, nombre y cédula antes de subirlas.
+\begin{figure}[h]
+	\centering
+	\captura{captura-01.png}{}\hfill
+	\captura{captura-02.png}{}\hfill
+	\captura{captura-03.png}{}
+	\caption{\pendiente{Describir qué muestra cada captura}.}
+	\label{fig:capturas}
+\end{figure}
+
+% ------------------------------------------------------------------
+\section{Resumen analítico de ISO/IEC/IEEE 29148:2018}
+% ------------------------------------------------------------------
+% De 1,5 a 2 páginas, con sus palabras (no traducir). Citar la cláusula exacta de cada idea,
+% por ejemplo: «... (cláusula 5.2.5) \cite{iso29148}».
+
+\subsection{Requisito bien formado}
+\pendiente{Qué es un requisito bien formado y cómo se construye. Cláusula 5.2.4.}
+
+\subsection{Características de un requisito individual}
+\pendiente{Explicar las nueve características. Cláusula 5.2.5.}
+
+\subsection{Características de un conjunto de requisitos}
+\pendiente{Explicar las características del conjunto. Cláusula 5.2.6.}
+
+\subsection{Términos ambiguos que la norma prohíbe}
+\pendiente{Explicar los tipos de términos que se deben evitar y por qué. Cláusula 5.2.7.}
+
+% ------------------------------------------------------------------
+\section{Glosario}
+% ------------------------------------------------------------------
+% 10 términos de la cláusula 3.1, definición parafraseada y un ejemplo propio en la app.
+{\small
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.5cm}|>{\raggedright\arraybackslash}p{2.6cm}|>{\raggedright\arraybackslash}p{1.4cm}|>{\raggedright\arraybackslash}p{5.4cm}|>{\raggedright\arraybackslash}p{5.4cm}|}
+\caption{Glosario de términos de la cláusula 3.1 de ISO/IEC/IEEE 29148:2018 \cite{iso29148}.}\label{tab:glosario}\\
+\hline
+\textbf{N.º} & \textbf{Término} & \textbf{Cláusula} & \textbf{Definición parafraseada} & \textbf{Ejemplo en la banca móvil} \\ \hline
+\endfirsthead
+\hline
+\textbf{N.º} & \textbf{Término} & \textbf{Cláusula} & \textbf{Definición parafraseada} & \textbf{Ejemplo en la banca móvil} \\ \hline
+\endhead
+1  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+2  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+3  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+4  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+5  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+6  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+7  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+8  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+9  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+10 & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+\end{longtable}
+}
+
+% ------------------------------------------------------------------
+\section{Requisitos del sistema}
+% ------------------------------------------------------------------
+% 15 requisitos, al menos 5 tipos distintos (tipos de la cláusula 5.2.8.3) y al menos 5 de calidad
+% con característica y subcaracterística de ISO/IEC 25010:2023 y una métrica.
+% Para los que no son de calidad, en «Característica» y «Métrica» poner «N/A».
+\pendiente{Párrafo corto que presente la tabla y remita a la Figura~\ref{fig:capturas}.}
+
+{\small
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.9cm}|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{1.8cm}|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{3.0cm}|}
+\caption{Requisitos de la banca móvil de Banco Pichincha clasificados según \cite{iso29148} e \cite{iso25010}.}\label{tab:requisitos}\\
+\hline
+\textbf{ID} & \textbf{Enunciado} & \textbf{Tipo} & \textbf{Característica ISO/IEC 25010} & \textbf{Métrica} & \textbf{Criterio de aceptación} \\ \hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Enunciado} & \textbf{Tipo} & \textbf{Característica ISO/IEC 25010} & \textbf{Métrica} & \textbf{Criterio de aceptación} \\ \hline
+\endhead
+RQ-01 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-02 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-03 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-04 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-05 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-06 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-07 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-08 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-09 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-10 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-11 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-12 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-13 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-14 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-15 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+\end{longtable}
+}
+
+% ------------------------------------------------------------------
+\section{Autoevaluación}
+% ------------------------------------------------------------------
+% Revisar cada requisito contra las nueve características de 5.2.5 y los términos de 5.2.7.
+% En la tabla van solo los que fallaron: la versión anterior, qué falló y la corregida.
+% Si se corrige uno, en la Tabla~\ref{tab:requisitos} va la versión corregida.
+\pendiente{Párrafo corto: cómo se revisaron los requisitos y cuántos se corrigieron.}
+
+{\small
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.9cm}|>{\raggedright\arraybackslash}p{4.6cm}|>{\raggedright\arraybackslash}p{3.4cm}|>{\raggedright\arraybackslash}p{5.6cm}|}
+\caption{Requisitos corregidos en la autoevaluación.}\label{tab:autoevaluacion}\\
+\hline
+\textbf{ID} & \textbf{Versión anterior} & \textbf{Qué falló (5.2.5 / 5.2.7)} & \textbf{Versión corregida} \\ \hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Versión anterior} & \textbf{Qué falló (5.2.5 / 5.2.7)} & \textbf{Versión corregida} \\ \hline
+\endhead
+\pendiente{RQ-xx} & \pendiente{versión anterior} & \pendiente{característica o término} & \pendiente{versión corregida} \\ \hline
+\end{longtable}
+}
+
+% ------------------------------------------------------------------
+\section{Reflexión}
+% ------------------------------------------------------------------
+% Media página: qué tipo de requisito costó más formular y por qué.
+\pendiente{Escribir la reflexión.}
+
+% ------------------------------------------------------------------
+\section{Declaración de uso de inteligencia artificial}
+% ------------------------------------------------------------------
+% Completar al final con lo que realmente se hizo con la IA.
+\begin{description}
+	\item[Herramienta:] Claude, asistente de inteligencia artificial de Anthropic.
+	\item[Versión:] Claude Opus 5.5.
+	\item[Propósito:] preparar la plantilla \LaTeX{} del documento, el archivo README.md y el archivo de referencias; ubicar en la norma las páginas de las cláusulas 1, 3 y 5.2; \pendiente{completar con el resto del uso real}.
+	\item[Cómo se verificó lo obtenido:] \pendiente{completar}.
+\end{description}
+
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+
+\end{document}

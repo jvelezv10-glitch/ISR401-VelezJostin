@@ -8,7 +8,10 @@ Estudiante: Vélez Vinces Jostin Gustavo.
 | Carpeta | Actividad | Archivo principal | PDF compilado |
 |---|---|---|---|
 | `FORM-TL-01/` | Taller de tipos de requisitos (formativa) | `main.tex` | `main.pdf` |
+| `TA-IND-01/` | IEEE 29148 y tipos de requisitos (sumativa). Cómo compilarla: [`TA-IND-01/README.md`](TA-IND-01/README.md) | `main.tex` | `main.pdf` |
 | `sga/` | Hoja de una página para el SGA | `FORM-TL-01-sga.tex` | — |
+
+Las instrucciones de compilación de abajo son las de `FORM-TL-01`. Cada actividad nueva tiene su propio `README.md` dentro de su carpeta.
 
 Estructura de `FORM-TL-01/`:
 
