@@ -5,6 +5,7 @@
 \usepackage[spanish,es-noshorthands,es-nodecimaldot,es-tabla]{babel}
 \usepackage[a4paper,margin=2.2cm]{geometry}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{xcolor}
@@ -19,10 +20,10 @@
 \newcommand{\pendiente}[1]{\textcolor{red}{[#1]}}
 
 % Inserta una captura; si la imagen aún no existe, muestra un recuadro para que el documento compile.
-\newcommand{\captura}[2]{%
+\newcommand{\captura}[1]{%
   \IfFileExists{figuras/#1}%
-    {\includegraphics[height=9cm]{#1}}%
-    {\fbox{\parbox[c][4cm][c]{6cm}{\centering\pendiente{falta figuras/#1}}}}%
+    {\includegraphics[width=\linewidth]{#1}}%
+    {\fbox{\parbox[c][4cm][c]{\linewidth}{\centering\pendiente{falta figuras/#1}}}}%
 }
 
 \begin{document}
@@ -63,16 +64,33 @@
 \section{Sistema elegido}
 % ------------------------------------------------------------------
 % Un párrafo: propósito, usuarios y contexto de la banca móvil de Banco Pichincha.
-\pendiente{Describir la aplicación de banca móvil de Banco Pichincha: para qué sirve, quiénes la usan y en qué contexto. Un párrafo.}
+La aplicación Banca Móvil del Banco Pichincha es una herramienta digital que permite a sus usuarios realizar operaciones bancarias desde sus teléfonos celulares sin necesidad de acudir a una agencia. A través de ella se pueden consultar saldos y movimientos, realizar transferencias y pagar servicios básicos (Figura~\ref{fig:capturas}). Está dirigida a los clientes del Banco Pichincha que necesitan administrar su dinero mediante herramientas digitales. En Ecuador, se utiliza desde cualquier lugar que cuente con conexión a internet, como el hogar, el trabajo o durante los desplazamientos, permitiendo realizar operaciones bancarias en diferentes momentos del día. De esta manera, facilita el acceso a los servicios bancarios y reduce la necesidad de acudir presencialmente a una agencia.
 
-% Capturas propias (mínimo 3). Guardarlas en figuras/ con estos nombres,
-% tapando número de cuenta, saldo, nombre y cédula antes de subirlas.
-\begin{figure}[h]
+% Fotografías propias de la pantalla, tomadas con otro teléfono porque la aplicación
+% no permite capturas de pantalla. Los datos personales están pixelados.
+\begin{figure}[htbp]
 	\centering
-	\captura{captura-01.png}{}\hfill
-	\captura{captura-02.png}{}\hfill
-	\captura{captura-03.png}{}
-	\caption{\pendiente{Describir qué muestra cada captura}.}
+	\begin{subfigure}[t]{0.185\textwidth}\centering
+		\captura{captura-01.png}
+		\caption{Inicio de sesión.}\label{fig:login}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.185\textwidth}\centering
+		\captura{captura-02.png}
+		\caption{Menú principal.}\label{fig:menu}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.185\textwidth}\centering
+		\captura{captura-03.png}
+		\caption{Transferencia.}\label{fig:transferencia}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.185\textwidth}\centering
+		\captura{captura-04.png}
+		\caption{Pago de servicios.}\label{fig:servicios}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.185\textwidth}\centering
+		\captura{captura-05.png}
+		\caption{Descuentos y beneficios.}\label{fig:descuentos}
+	\end{subfigure}
+	\caption{Pantallas de la aplicación de banca móvil de Banco Pichincha (versión 15.0.0). Fotografías propias tomadas con otro teléfono, porque la aplicación no permite capturas de pantalla; los datos personales están pixelados.}
 	\label{fig:capturas}
 \end{figure}
 
