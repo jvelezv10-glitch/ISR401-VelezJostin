@@ -101,10 +101,28 @@ La aplicación Banca Móvil del Banco Pichincha es una herramienta digital que p
 % por ejemplo: «... (cláusula 5.2.5) \cite{iso29148}».
 
 \subsection{Requisito bien formado}
-\pendiente{Qué es un requisito bien formado y cómo se construye. Cláusula 5.2.4.}
+SWEBOK define un requisito de software como una propiedad que algo debe tener para resolver un problema del mundo real \cite{swebok2024}. La norma lo define como un enunciado que expresa una necesidad junto con sus condiciones y restricciones (cláusula 5.2.4). Además, pide que los requisitos estén “bien formados”, porque así es más fácil validarlos con los interesados y comprobar que reflejan lo que de verdad necesitan (cláusula 5.2.4).
+
+Según la norma, un requisito bien formado presenta una o más de estas propiedades: lo debe cumplir el sistema para resolver un problema o lograr un objetivo; tiene condiciones medibles; está limitado por restricciones; describe lo que hace el sistema y no lo que hace el usuario; y se puede verificar (cláusula 5.2.4).
+
+Para escribirlo, la norma pide un sujeto (el sistema), un verbo y la acción o restricción. “Deberá” (\emph{shall}) se usa solo para lo obligatorio, en voz activa y en forma positiva, y se evita “deberá ser capaz de” (cláusula 5.2.4). La norma también diferencia las condiciones, que son atributos medibles del requisito, de las restricciones, que limitan el diseño, como una ley, el presupuesto o una plataforma que ya existe (cláusula 5.2.4).
+
+\textbf{Ejemplo} (pantalla “Ingresa un monto” de la aplicación, Figura~\ref{fig:transferencia}): “La aplicación deberá mostrar el aviso ‘Esta transferencia no tiene costo’ antes de que el cliente confirme una transferencia sin costo”. El sujeto es la aplicación, la acción es obligatoria, tiene una condición y se puede comprobar viendo la pantalla.
 
 \subsection{Características de un requisito individual}
-\pendiente{Explicar las nueve características. Cláusula 5.2.5.}
+La norma dice que cada requisito, por sí solo, debe cumplir nueve características (cláusula 5.2.5):
+
+\begin{enumerate}
+	\item \textbf{Necesario} (\emph{necessary}): si se quita, falta algo que ningún otro requisito cubre, y además sigue vigente (cláusula 5.2.5).
+	\item \textbf{Apropiado} (\emph{appropriate}): tiene el nivel de detalle que corresponde y no impone diseño sin necesidad (cláusula 5.2.5). Ejemplo: “La aplicación deberá permitir el ingreso mediante huella dactilar” es apropiado. “La app deberá usar la librería biométrica X” no lo es, porque ya decide el diseño.
+	\item \textbf{Inequívoco} (\emph{unambiguous}): se entiende de una sola forma (cláusula 5.2.5). Si un requisito dice “mostrar el saldo rápidamente”, el programador y el banco pueden entender tiempos distintos.
+	\item \textbf{Completo} (\emph{complete}): se entiende sin buscar información en otro lado (cláusula 5.2.5). “La app deberá permitir transferir” queda incompleto si no dice desde qué cuenta, aunque la pantalla de la aplicación sí tiene el campo “Desde” (Figura~\ref{fig:transferencia}).
+	\item \textbf{Singular} (\emph{singular}): pide una sola capacidad o restricción (cláusula 5.2.5). Ejemplo: “La app permitirá ver el saldo, ocultarlo con el ícono del ojo y transferir dinero” se debe separar en tres requisitos de la pantalla “Mis productos” (Figura~\ref{fig:menu}).
+	\item \textbf{Factible} (\emph{feasible}): se puede hacer con el costo, el tiempo y la tecnología disponibles (cláusula 5.2.5). Pedir que una transferencia llegue en 0 segundos no es factible.
+	\item \textbf{Verificable} (\emph{verifiable}): se puede demostrar que se cumplió, y es más fácil cuando es medible (cláusula 5.2.5). SWEBOK también considera la verificabilidad una propiedad esencial de los requisitos \cite{swebok2024}. Si un requisito no se puede probar, no sirve, porque nadie puede saber si se cumplió. Ejemplo: “La app deberá mostrar promociones relevantes” no es verificable. En cambio, “La tarjeta de una promoción en la pantalla ‘Descuentos y beneficios’ deberá mostrar: establecimiento, descuento, cobertura, fecha de vigencia” se puede revisar dato por dato (Figura~\ref{fig:descuentos}).
+	\item \textbf{Correcto} (\emph{correct}): representa bien la necesidad de la que salió (cláusula 5.2.5). Si el banco quiere avisar que la transferencia es gratis y el requisito pide “mostrar el costo de la transferencia”, el requisito no es correcto.
+	\item \textbf{Conforme} (\emph{conforming}): sigue la plantilla y el estilo de redacción aprobados (cláusula 5.2.5). Por ejemplo, todos los requisitos de este trabajo usan “deberá” como verbo obligatorio, con un sujeto, una acción y una condición. Si un requisito estuviera escrito con otra estructura, por ejemplo con “debe” o en voz pasiva, no sería conforme.
+\end{enumerate}
 
 \subsection{Características de un conjunto de requisitos}
 \pendiente{Explicar las características del conjunto. Cláusula 5.2.6.}
