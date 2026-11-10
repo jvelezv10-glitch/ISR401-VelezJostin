@@ -167,16 +167,16 @@ La norma pide que los requisitos digan “qué” se necesita y no “cómo”. 
 \hline
 \textbf{N.º} & \textbf{Término} & \textbf{Cláusula} & \textbf{Definición parafraseada} & \textbf{Ejemplo en la banca móvil} \\ \hline
 \endhead
-1  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
-2  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
-3  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
-4  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
-5  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
-6  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
-7  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
-8  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
-9  & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
-10 & \pendiente{término} & 3.1.x & \pendiente{definición} & \pendiente{ejemplo} \\ \hline
+1 & Requisito (\emph{requirement}) & 3.1.19 & Enunciado que expresa una necesidad junto con sus condiciones y restricciones. Siempre se refiere a un sistema, software o servicio. & “La aplicación deberá mostrar el aviso ‘Esta transferencia no tiene costo’ antes de que el cliente confirme una transferencia sin costo.” \\ \hline
+2 & Interesado (\emph{stakeholder}) & 3.1.28 & Persona u organización que tiene un derecho, un interés o un reclamo sobre el sistema. Incluye usuarios, desarrolladores, clientes, operadores y entes reguladores. & El cliente, Banco Pichincha, el equipo que desarrolla la aplicación, la Superintendencia de Bancos y los comercios que aparecen en “Descuentos y beneficios”. \\ \hline
+3 & Usuario (\emph{user}) & 3.1.35 & Persona o grupo que interactúa con el sistema o se beneficia de él mientras se usa. Es un tipo de interesado. & El cliente que entra con su huella y paga la luz en “Pago de servicios”. También quien recibe una transferencia se beneficia del sistema aunque no lo use en ese momento. \\ \hline
+4 & Condición (\emph{condition}) & 3.1.6 & Atributo medible que indica en qué circunstancia o evento aplica un requisito. & En el requisito del aviso, la condición es “antes de que el cliente confirme la transferencia”. \\ \hline
+5 & Restricción (\emph{constraint}) & 3.1.7 & Limitación impuesta desde fuera sobre el sistema, su diseño o el proceso con que se desarrolla. No la decide el equipo, se le impone. & La LOPDP obliga a la aplicación a tratar los datos personales del cliente según la ley, aunque al equipo le resultara más fácil hacerlo de otra forma. \\ \hline
+6 & Atributo (\emph{attribute}) & 3.1.2 & Propiedad de algo que se puede distinguir por cantidad o por cualidad. & Los atributos de un requisito, como su ID (RQ-01), su tipo y su prioridad. En la aplicación, el “Saldo disponible” es un atributo de la cuenta. \\ \hline
+7 & Verificación (\emph{verification}) & 3.1.37 & Confirmar con evidencia que se cumplió lo que estaba especificado. Responde a “¿lo construimos bien?”. & Un \emph{tester} abre “Ingresa un monto” y comprueba que el aviso aparece con el texto exacto que pide el requisito. \\ \hline
+8 & Validación (\emph{validation}) & 3.1.36 & Confirmar con evidencia que el sistema sirve para el uso previsto. Responde a “¿construimos el sistema correcto?”. & Se pide a clientes reales que paguen su planilla de agua desde la aplicación. Si no logran hacerlo sin ayuda, la aplicación no queda validada, aunque cumpla cada requisito escrito. \\ \hline
+9 & Trazabilidad de requisitos (\emph{requirements traceability}) & 3.1.23 & Registrar de dónde viene un requisito (hacia arriba, el requisito “padre”) y en qué otros se divide (hacia abajo, los requisitos “hijos”). & La necesidad “pagar servicios desde el celular” (padre) se divide en RQ-05, que muestra las categorías, y RQ-06, que permite crear una programación de pago (hijos). \\ \hline
+10 & Sistema de interés (\emph{system-of-interest}) & 3.1.32 & El sistema cuyo ciclo de vida se está analizando en el trabajo. & La aplicación móvil de Banco Pichincha (versión 15.0.0). La Banca Web, Deuna y el sistema del SRI quedan fuera, aunque la aplicación se conecte con ellos. \\ \hline
 \end{longtable}
 }
 
