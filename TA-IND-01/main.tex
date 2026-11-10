@@ -186,10 +186,11 @@ La norma pide que los requisitos digan “qué” se necesita y no “cómo”. 
 % 15 requisitos, al menos 5 tipos distintos (tipos de la cláusula 5.2.8.3) y al menos 5 de calidad
 % con característica y subcaracterística de ISO/IEC 25010:2023 y una métrica.
 % Para los que no son de calidad, en «Característica» y «Métrica» poner «N/A».
-\pendiente{Párrafo corto que presente la tabla y remita a la Figura~\ref{fig:capturas}.}
+Se formularon 15 requisitos para la aplicación móvil de Banco Pichincha, basados principalmente en las pantallas de la Figura~\ref{fig:capturas}. El tipo de cada requisito se asignó según la cláusula 5.2.8.3 de la norma ISO/IEC/IEEE 29148:2018 \cite{iso29148}, y los requisitos de calidad se clasificaron según las características y subcaracterísticas de ISO/IEC 25010:2023 \cite{iso25010}. Cada requisito incluye una métrica, cuando corresponde, y un criterio de aceptación que permite verificar su cumplimiento (Tabla~\ref{tab:requisitos}).
 
-{\small
-\begin{longtable}{|>{\raggedright\arraybackslash}p{0.9cm}|>{\raggedright\arraybackslash}p{4.2cm}|>{\raggedright\arraybackslash}p{1.8cm}|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{3.0cm}|}
+{\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.95cm}|>{\raggedright\arraybackslash}p{4.7cm}|>{\raggedright\arraybackslash}p{1.6cm}|>{\raggedright\arraybackslash}p{2.4cm}|>{\raggedright\arraybackslash}p{2.1cm}|>{\raggedright\arraybackslash}p{3.7cm}|}
 \caption{Requisitos de la banca móvil de Banco Pichincha clasificados según \cite{iso29148} e \cite{iso25010}.}\label{tab:requisitos}\\
 \hline
 \textbf{ID} & \textbf{Enunciado} & \textbf{Tipo} & \textbf{Característica ISO/IEC 25010} & \textbf{Métrica} & \textbf{Criterio de aceptación} \\ \hline
@@ -197,21 +198,21 @@ La norma pide que los requisitos digan “qué” se necesita y no “cómo”. 
 \hline
 \textbf{ID} & \textbf{Enunciado} & \textbf{Tipo} & \textbf{Característica ISO/IEC 25010} & \textbf{Métrica} & \textbf{Criterio de aceptación} \\ \hline
 \endhead
-RQ-01 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-02 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-03 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-04 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-05 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-06 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-07 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-08 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-09 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-10 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-11 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-12 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-13 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-14 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
-RQ-15 & \pendiente{enunciado} & \pendiente{tipo} & \pendiente{} & \pendiente{} & \pendiente{} \\ \hline
+RQ-01 & La aplicación deberá permitir el ingreso del cliente con la huella dactilar registrada en su teléfono. & Funcional & N/A & N/A & Con una huella registrada, el cliente pulsa “Huella / Face ID” y entra a “Mis productos”. \\ \hline
+RQ-02 & La aplicación deberá impedir la captura de pantalla en la pantalla de inicio de sesión. & Calidad & Seguridad – Confidencialidad & Capturas legibles guardadas & Se intentan 10 capturas en el inicio de sesión y la galería guarda 0 imágenes legibles. \\ \hline
+RQ-03 & La aplicación deberá ocultar el saldo disponible cuando el cliente pulse el ícono del ojo en “Mis productos”. & Funcional & N/A & N/A & Al pulsar el ícono, el saldo se muestra como “**.**”. \\ \hline
+RQ-04 & La aplicación deberá mostrar el aviso “Esta transferencia no tiene costo” en “Ingresa un monto” antes de que el cliente confirme una transferencia sin costo. & Funcional & N/A & N/A & En una transferencia sin costo, el aviso aparece antes del botón de confirmación. \\ \hline
+RQ-05 & La aplicación deberá mostrar en “Pago de servicios” las siguientes categorías: Agua Potable, Electricidad, SRI, IESS, Venta por Catálogo, Almacenes. & Funcional & N/A & N/A & Al abrir “Pago de servicios” se ven las seis categorías. \\ \hline
+RQ-06 & La aplicación deberá permitir crear una programación de pago desde la opción “Crear programación”. & Funcional & N/A & N/A & El cliente crea una programación con fecha y servicio, y esta queda guardada en la pantalla. \\ \hline
+RQ-07 & La aplicación deberá confirmar una transferencia entre cuentas de Banco Pichincha en un máximo de 5~s en el 95~\% de los casos, con conexión 4G. & Calidad & Eficiencia de desempeño – Comportamiento temporal & Tiempo de respuesta (s) & De 100 transferencias con 4G, al menos 95 se confirman en $\leq$~5~s. \\ \hline
+RQ-08 & La aplicación deberá mostrar, antes de ejecutar una transferencia, una pantalla de confirmación con el nombre del beneficiario, el monto y la cuenta de origen. & Factores humanos & Capacidad de interacción – Protección contra errores del usuario & Transferencias ejecutadas sin confirmación (\%) & De 20 transferencias de prueba, el 0~\% se ejecuta sin la pantalla de confirmación. \\ \hline
+RQ-09 & La aplicación deberá consultar al SRI el valor de la matrícula vehicular según la placa ingresada en el campo “PLACA RAMV CPN”, cuando el cliente pulse “Validar”. & Interfaz & Compatibilidad – Interoperabilidad & Valores que coinciden con el SRI (\%) & Con 10 placas de prueba, el valor coincide con el del SRI en 10 de 10 consultas. \\ \hline
+RQ-10 & La aplicación deberá filtrar las promociones de “Descuentos y beneficios” según la ciudad que elija el cliente. & Funcional & N/A & N/A & Al elegir “Quevedo”, solo aparecen promociones válidas en Quevedo. \\ \hline
+RQ-11 & La aplicación deberá estar disponible el 99,5~\% del tiempo mensual, sin contar mantenimientos avisados con 48~h de anticipación. & Calidad & Fiabilidad – Disponibilidad & Disponibilidad mensual (\%) & Un monitoreo de 30 días registra $\geq$~99,5~\% de tiempo en línea. \\ \hline
+RQ-12 & La aplicación deberá permitir que un cliente que nunca la ha usado pague una planilla de electricidad en un máximo de 3~min sin ayuda. & Usabilidad & Capacidad de interacción – Aprendizaje & Tiempo de tarea (min) y tasa de éxito (\%) & De 10 clientes nuevos, al menos 9 pagan en $\leq$~3~min sin ayuda. \\ \hline
+RQ-13 & La aplicación deberá bloquear el ingreso con PIN durante 30~min tras 3 intentos fallidos consecutivos. & Calidad & Seguridad – Autenticidad & Intentos antes del bloqueo; duración (min) & Tras 3 PIN incorrectos, el cuarto intento se rechaza y el PIN vuelve a funcionar a los 30~min. \\ \hline
+RQ-14 & El tratamiento de los datos personales del cliente en la aplicación deberá cumplir la Ley Orgánica de Protección de Datos Personales (Registro Oficial, Quinto Suplemento N.º 459, 26 de mayo de 2021). & Restricción & N/A & N/A & Una auditoría de cumplimiento de la LOPDP no reporta incumplimientos. \\ \hline
+RQ-15 & El banco deberá publicar las notas de versión de una actualización de la aplicación antes de su liberación en la tienda de aplicaciones. & Proceso & N/A & N/A & El día de la liberación, la ficha de la tienda muestra las notas de esa versión. \\ \hline
 \end{longtable}
 }
 
