@@ -125,10 +125,34 @@ La norma dice que cada requisito, por sí solo, debe cumplir nueve característi
 \end{enumerate}
 
 \subsection{Características de un conjunto de requisitos}
-\pendiente{Explicar las características del conjunto. Cláusula 5.2.6.}
+La norma aclara que algunas cualidades se revisan en el conjunto y no en cada requisito por separado (cláusula 5.2.6):
+
+\begin{itemize}
+	\item \textbf{Completo} (\emph{complete}): el conjunto describe todo lo necesario y no deja pendientes “por definir” (TBD), “por especificar” (TBS) o “por resolver” (TBR) (cláusula 5.2.6).
+	\item \textbf{Consistente} (\emph{consistent}): los requisitos no se repiten ni se contradicen, usan las mismas unidades y cada término significa siempre lo mismo (cláusula 5.2.6). Ejemplo: en la aplicación, la función QR aparece como “Pagar con QR”, “Ver mi QR” y “Escanear o mostrar QR” (Figuras~\ref{fig:login} y~\ref{fig:menu}). La especificación tiene que definir cada término para no llamar de formas distintas a una misma función.
+	\item \textbf{Factible} (\emph{feasible}): se puede hacer el conjunto entero, y es asequible (cláusula 5.2.6).
+	\item \textbf{Comprensible} (\emph{comprehensible}): se entiende qué se espera y cómo se relaciona con el sistema mayor (cláusula 5.2.6).
+	\item \textbf{Validable} (\emph{able to be validated}): si se cumple el conjunto, se satisfacen de verdad las necesidades dentro de los límites técnicos, de costo y legales (cláusula 5.2.6).
+\end{itemize}
+
+La norma advierte que revisar esto a tiempo evita que los requisitos crezcan sin control (\emph{requirements creep}) (cláusula 5.2.6).
 
 \subsection{Términos ambiguos que la norma prohíbe}
-\pendiente{Explicar los tipos de términos que se deben evitar y por qué. Cláusula 5.2.7.}
+La norma pide que los requisitos digan “qué” se necesita y no “cómo”. También pide evitar los términos vagos, porque no dejan verificar o se pueden entender de varias formas (cláusula 5.2.7). Los tipos son:
+
+\begin{itemize}
+	\item superlativos (“el mejor”);
+	\item lenguaje subjetivo (“fácil de usar”);
+	\item pronombres vagos (“esto”, “eso”);
+	\item adverbios y adjetivos ambiguos (“casi siempre”, “mínimo”) y conectores como “y/o”;
+	\item términos abiertos (“pero no limitado a”);
+	\item comparativos (“mejor que”);
+	\item escapatorias (“si es posible”, “según corresponda”);
+	\item términos de totalidad (“todos”, “siempre”, “nunca”);
+	\item referencias incompletas, sin versión ni fecha (cláusula 5.2.7).
+\end{itemize}
+
+\textbf{Ejemplo} (pantalla “Pago de servicios”, Figura~\ref{fig:servicios}): “La app deberá permitir pagar todos los servicios de forma fácil y, si es posible, programarlos” tiene un término de totalidad, lenguaje subjetivo y una escapatoria. Se corrige con dos requisitos: “La aplicación deberá mostrar las siguientes categorías: Agua Potable, Electricidad, SRI, IESS, Venta por Catálogo, Almacenes” y “La aplicación deberá permitir crear una programación de pago desde la opción ‘Crear programación’”. Por último, la norma pide documentar los supuestos en los atributos del requisito (cláusula 5.2.7).
 
 % ------------------------------------------------------------------
 \section{Glosario}
