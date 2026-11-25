@@ -1,0 +1,156 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands,es-nodecimaldot,es-tabla]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\renewcommand{\arraystretch}{1.25}
+\graphicspath{{figuras/}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Texto en rojo = lo que falta escribir. Al terminar no debe quedar ninguno.
+\newcommand{\pendiente}[1]{\textcolor{red}{[#1]}}
+
+\begin{document}
+
+% ------------------------------------------------------------------
+% Carátula
+% ------------------------------------------------------------------
+\begin{titlepage}
+	\centering
+	\begin{minipage}[c]{0.22\textwidth}\centering
+		\includegraphics[height=3.4cm]{logo-uteq.png}
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.52\textwidth}\centering
+		{\large\bfseries UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO}\\[6pt]
+		Facultad de Ciencias de la Computación\\
+		Carrera de Software
+	\end{minipage}\hfill
+	\begin{minipage}[c]{0.22\textwidth}\centering
+		\includegraphics[height=3.4cm]{logo-fcc.png}
+	\end{minipage}
+
+	\vspace*{\fill}
+	{\large Asignatura: Ingeniería de Requerimientos (ISR-401)}\\[18pt]
+	{\LARGE\bfseries TA-IND-02\\[6pt] Priorización de requisitos con MoSCoW,\\[4pt] Kano y votación ponderada}\\[10pt]
+	{\normalsize Trabajo autónomo individual (actividad sumativa)}\\[14pt]
+	{\large Dominio asignado: Laboratorio clínico: órdenes, muestras y resultados}
+	\vspace*{\fill}
+
+	{\large Estudiante: Vélez Vinces Jostin Gustavo}\\[8pt]
+	Cuarto nivel $\cdot$ Paralelo B\\[8pt]
+	Docente: Ing. Gleiston Cicerón Guerrero Ulloa, PhD\\[8pt]
+	Período académico 2026--2027 SPA
+	\vspace*{\fill}
+
+	Quevedo, 28 de noviembre de 2026
+\end{titlepage}
+
+% ------------------------------------------------------------------
+\section{Dominio}
+% ------------------------------------------------------------------
+\pendiente{Un párrafo: qué hace un laboratorio clínico, quiénes intervienen (paciente, médico, recepcionista, laboratorista, bioquímico) y por qué conviene priorizar los requisitos antes de construir una primera versión.}
+
+% ------------------------------------------------------------------
+\section{Requisitos del sistema}
+% ------------------------------------------------------------------
+Los requisitos se redactaron siguiendo las características de un requisito bien formado de la norma ISO/IEC/IEEE 29148~\cite{iso29148}: cada uno expresa una sola necesidad, usa la forma \emph{El sistema deberá} y puede verificarse. La Tabla~\ref{tab:requisitos} reúne los 12 requisitos funcionales y los 8 requisitos de calidad cuantificados.
+
+\begin{longtable}{|L{1.5cm}|L{2.6cm}|L{11.0cm}|}
+\caption{Requisitos del sistema de laboratorio clínico}\label{tab:requisitos}\\
+\hline
+\textbf{ID} & \textbf{Tipo} & \textbf{Requisito}\\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Tipo} & \textbf{Requisito}\\
+\hline
+\endhead
+RF-01 & Funcional & El sistema deberá registrar la orden médica de un paciente con los datos del médico que la solicita, la fecha y los exámenes pedidos, siempre que el paciente ya esté registrado con su número de cédula.\\
+\hline
+RF-02 & Funcional & El sistema deberá permitir al recepcionista elegir los exámenes de la orden desde un catálogo de exámenes disponibles en el laboratorio, mostrando el precio de cada uno.\\
+\hline
+RF-03 & Funcional & El sistema deberá registrar el pago de la orden en efectivo, tarjeta o seguro médico antes de pasarla a toma de muestras.\\
+\hline
+RF-04 & Funcional & El sistema deberá imprimir una etiqueta con código de barras para cada muestra, enlazada al código de la orden y al tipo de examen.\\
+\hline
+RF-05 & Funcional & El sistema deberá registrar qué usuario tomó la muestra y la fecha y hora de la toma, cuando se escanea el código de barras de la etiqueta.\\
+\hline
+RF-06 & Funcional & El sistema deberá avisar a recepción que se necesita una nueva toma cuando se registre el rechazo de una muestra con su motivo (hemolizada, insuficiente, mal etiquetada u otro).\\
+\hline
+RF-07 & Funcional & El sistema deberá permitir al laboratorista ingresar los resultados de cada examen de la orden, solo si la muestra fue registrada como tomada y no fue rechazada.\\
+\hline
+RF-08 & Funcional & El sistema deberá mostrar junto a cada resultado sus valores de referencia según la edad y el sexo del paciente.\\
+\hline
+RF-09 & Funcional & El sistema deberá avisar al bioquímico en el momento en que se registre un resultado fuera de los límites críticos definidos para ese examen.\\
+\hline
+RF-10 & Funcional & El sistema deberá permitir que solo el bioquímico valide los resultados de una orden, registrando su usuario y la fecha y hora de la validación.\\
+\hline
+RF-11 & Funcional & El sistema deberá entregar el resultado al paciente o al médico que hizo la orden únicamente después de que el bioquímico lo haya validado.\\
+\hline
+RF-12 & Funcional & El sistema deberá mostrar el historial de exámenes de un paciente ordenado por fecha, cuando se busca por su número de cédula.\\
+\hline
+RNF-01 & Calidad (rendimiento) & El sistema deberá mostrar el resultado validado al paciente en menos de 3 segundos en el 95\,\% de las consultas.\\
+\hline
+RNF-02 & Calidad (disponibilidad) & El sistema deberá estar disponible el 99\,\% del tiempo en el horario de atención del laboratorio, de lunes a sábado de 06:00 a 18:00.\\
+\hline
+RNF-03 & Calidad (seguridad) & El sistema deberá permitir el acceso solo con usuario y contraseña, y deberá bloquear la cuenta durante 15 minutos después de 3 intentos fallidos seguidos.\\
+\hline
+RNF-04 & Calidad (seguridad) & El sistema deberá registrar el usuario, la fecha y la hora de cada vez que alguien abre un resultado, y guardar ese registro por al menos 5 años.\\
+\hline
+RNF-05 & Calidad (confidencialidad) & El sistema deberá cifrar los resultados de los pacientes con AES de 256 bits cuando se guardan y con TLS 1.2 o superior cuando se envían, de modo que ningún resultado quede almacenado en texto legible.\\
+\hline
+RNF-06 & Calidad (usabilidad) & El sistema deberá permitir que un recepcionista registre una orden con 3 exámenes en menos de 2 minutos, después de una capacitación de 1 hora.\\
+\hline
+RNF-07 & Calidad (fiabilidad) & El sistema deberá tener cero resultados entregados sin validar, revisado en el registro de entregas de cada mes.\\
+\hline
+RNF-08 & Calidad (trazabilidad) & El sistema deberá guardar el 100\,\% de los cambios de etapa de cada muestra con el usuario, la fecha y la hora, desde la toma hasta la entrega del resultado.\\
+\hline
+\end{longtable}
+
+% ------------------------------------------------------------------
+\section{Fundamento de las tres técnicas}
+% ------------------------------------------------------------------
+\pendiente{Qué es MoSCoW, Kano y la votación ponderada, y qué criterio prioriza cada una~\cite{pohl2025,wiegers2013,ireb2026}.}
+
+% ------------------------------------------------------------------
+\section{Clasificación MoSCoW}
+% ------------------------------------------------------------------
+\pendiente{Categoría de cada requisito con justificación de una línea y esfuerzo estimado; el grupo Must no supera el 60\,\% del esfuerzo.}
+
+% ------------------------------------------------------------------
+\section{Análisis de Kano}
+% ------------------------------------------------------------------
+\pendiente{Las 8 características, el cuestionario aplicado a 5 personas, la tabulación y la clasificación con la tabla de evaluación.}
+
+% ------------------------------------------------------------------
+\section{Votación ponderada}
+% ------------------------------------------------------------------
+\pendiente{Reparto de 100 puntos de 3 personas, puntaje total y orden resultante.}
+
+% ------------------------------------------------------------------
+\section{Comparación de los tres órdenes}
+% ------------------------------------------------------------------
+\pendiente{Coincidencias, discrepancias y su explicación; correlación de Spearman entre MoSCoW y votación.}
+
+% ------------------------------------------------------------------
+\section{Decisión para la primera versión}
+% ------------------------------------------------------------------
+\pendiente{Lista priorizada final y justificación de lo que queda fuera.}
+
+% ------------------------------------------------------------------
+\section{Declaración de uso de inteligencia artificial}
+% ------------------------------------------------------------------
+\pendiente{Herramienta, versión, propósito y cómo se verificó.}
+
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+
+\end{document}

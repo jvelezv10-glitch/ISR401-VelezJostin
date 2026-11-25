@@ -10,6 +10,7 @@ Estudiante: Vélez Vinces Jostin Gustavo.
 | `FORM-TL-01/` | Taller de tipos de requisitos (formativa) | `main.tex` | `main.pdf` |
 | `TA-IND-01/` | IEEE 29148 y tipos de requisitos (sumativa). Cómo compilarla: [`TA-IND-01/README.md`](TA-IND-01/README.md) | `main.tex` | `main.pdf` |
 | `EV-PRAC-01/` | Evaluación de la Unidad I, caso ALERTARÍO: transcripción fiel de la prueba escrita (sumativa) | `main.tex` | `main.pdf` |
+| `TA-IND-02/` | Priorización de requisitos con MoSCoW, Kano y votación ponderada (sumativa), dominio: laboratorio clínico. Cómo compilarla: [`TA-IND-02/README.md`](TA-IND-02/README.md) | `main.tex` | `main.pdf` |
 | `sga/` | Hoja de una página para el SGA | `FORM-TL-01-sga.tex` | — |
 
 Las instrucciones de compilación de abajo son las de `FORM-TL-01`. Cada actividad nueva tiene su propio `README.md` dentro de su carpeta, salvo `EV-PRAC-01`, que se explica en la sección siguiente.
