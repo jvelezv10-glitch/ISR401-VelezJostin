@@ -123,17 +123,121 @@ RNF-08 & Calidad (trazabilidad) & El sistema deberá guardar el 100\,\% de los c
 % ------------------------------------------------------------------
 \section{Clasificación MoSCoW}
 % ------------------------------------------------------------------
-\pendiente{Categoría de cada requisito con justificación de una línea y esfuerzo estimado; el grupo Must no supera el 60\,\% del esfuerzo.}
+Cada requisito se clasificó en una de las cuatro categorías de MoSCoW y se le asignó un esfuerzo estimado de 1 (muy fácil de construir) a 5 (muy difícil). La Tabla~\ref{tab:moscow} muestra la categoría y la justificación de cada uno, y la Tabla~\ref{tab:moscow-resumen} el esfuerzo por categoría. El grupo \emph{Must} suma 20 de 58 puntos de esfuerzo, es decir, el 34,5\,\%, por debajo del límite del 60\,\% que fija la guía.
+
+\begin{longtable}{|L{1.4cm}|L{3.0cm}|L{1.9cm}|L{1.8cm}|L{6.2cm}|}
+\caption{Clasificación MoSCoW de los requisitos}\label{tab:moscow}\\
+\hline
+\textbf{ID} & \textbf{Requisito} & \textbf{Categoría} & \textbf{Esfuerzo} & \textbf{Justificación}\\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Requisito} & \textbf{Categoría} & \textbf{Esfuerzo} & \textbf{Justificación}\\
+\hline
+\endhead
+RF-01 & Registrar orden médica & Must & 3 & Sin la orden no se sabe qué exámenes hacerle al paciente.\\
+\hline
+RF-02 & Elegir exámenes del catálogo & Must & 2 & El recepcionista tiene que poder marcar qué exámenes van en la orden.\\
+\hline
+RF-03 & Registrar pago & Should & 3 & Al inicio el cobro se puede llevar en la caja como ya se hace, pero es mejor tenerlo junto a la orden.\\
+\hline
+RF-04 & Etiqueta con código de barras & Should & 4 & Evita confundir muestras, aunque al principio se pueden etiquetar a mano con el código de la orden.\\
+\hline
+RF-05 & Registrar quién tomó la muestra & Must & 2 & Si hay un problema con la muestra hay que saber quién la tomó y a qué hora.\\
+\hline
+RF-06 & Aviso de muestra rechazada & Should & 2 & RF-07 necesita que el rechazo quede registrado; el aviso ahorra tiempo, aunque al inicio el laboratorista puede avisar a recepción directamente.\\
+\hline
+RF-07 & Ingresar resultados & Must & 3 & Es lo principal del laboratorio: sin resultados no hay nada que entregar.\\
+\hline
+RF-08 & Valores de referencia & Should & 3 & Ayuda mucho al médico a leer el resultado, pero al inicio se pueden poner fijos en la hoja.\\
+\hline
+RF-09 & Aviso de valor crítico & Should & 3 & Es importante para la salud del paciente, pero el bioquímico igual revisa todo antes de validar.\\
+\hline
+RF-10 & Validación del bioquímico & Must & 2 & Ningún resultado puede salir sin que lo revise el bioquímico responsable.\\
+\hline
+RF-11 & Entrega solo si está validado & Must & 2 & Entregar un resultado sin validar puede llevar a un diagnóstico equivocado.\\
+\hline
+RF-12 & Historial del paciente & Could & 3 & Sirve para comparar exámenes anteriores, pero no hace falta para atender al paciente de hoy.\\
+\hline
+RNF-01 & Resultado en menos de 3 s & Could & 3 & Que cargue rápido es bueno, pero si tarda un poco más no frena la atención.\\
+\hline
+RNF-02 & Disponibilidad del 99\,\% & Won't & 5 & Necesita servidores de respaldo y monitoreo, y eso es muy caro para una primera versión.\\
+\hline
+RNF-03 & Bloqueo tras 3 intentos & Should & 2 & Protege las cuentas y es fácil de hacer, aunque la contraseña ya da una primera protección.\\
+\hline
+RNF-04 & Registro de quién abre resultados & Could & 3 & Es útil para auditorías, pero al inicio basta con controlar quién tiene acceso.\\
+\hline
+RNF-05 & Cifrado AES y TLS & Must & 4 & Son datos de salud, que la LOPDP considera datos sensibles~\cite{lopdp2021}, y deben protegerse desde el primer día.\\
+\hline
+RNF-06 & Orden en menos de 2 minutos & Won't & 3 & Primero hay que tener el sistema funcionando y después medir y mejorar los tiempos con los usuarios.\\
+\hline
+RNF-07 & Cero resultados sin validar & Must & 2 & Es lo que se comprueba para saber que RF-10 y RF-11 de verdad se cumplen.\\
+\hline
+RNF-08 & Trazabilidad de etapas & Won't & 4 & RF-05 ya registra la toma, y seguir todas las etapas se puede dejar para una versión después.\\
+\hline
+\end{longtable}
+
+\begin{table}[htbp]
+\centering
+\caption{Resumen de la clasificación MoSCoW y esfuerzo por categoría}\label{tab:moscow-resumen}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Categoría} & \textbf{Requisitos} & \textbf{Esfuerzo} & \textbf{\% del esfuerzo}\\
+\hline
+Must & 8 & 20 & 34,5\,\%\\
+\hline
+Should & 6 & 17 & 29,3\,\%\\
+\hline
+Could & 3 & 9 & 15,5\,\%\\
+\hline
+Won't & 3 & 12 & 20,7\,\%\\
+\hline
+\textbf{Total} & \textbf{20} & \textbf{58} & \textbf{100,0\,\%}\\
+\hline
+\end{tabular}
+\end{table}
+
+Al clasificar se encontró una dependencia: RF-07 (\emph{Must}) solo permite ingresar resultados de muestras que no fueron rechazadas, y para eso el rechazo tiene que quedar registrado, lo que ocurre en RF-06. Por eso RF-06 se dejó como \emph{Should} y no como \emph{Could}, de modo que un requisito \emph{Must} no dependa de uno que podría quedar fuera.
 
 % ------------------------------------------------------------------
 \section{Análisis de Kano}
 % ------------------------------------------------------------------
-\pendiente{Las 8 características, el cuestionario aplicado a 5 personas, la tabulación y la clasificación con la tabla de evaluación.}
+Para el cuestionario Kano se eligieron 8 características que el paciente o el personal del laboratorio pueden notar directamente (Tabla~\ref{tab:kano-caract}). Por cada característica se formula una pregunta funcional (si el sistema la tiene) y una disfuncional (si no la tiene), con cinco opciones de respuesta: me gustaría que fuera así, lo espero, me da igual, puedo aceptarlo y no me gustaría que fuera así.
+
+\begin{table}[htbp]
+\centering
+\caption{Características evaluadas con el cuestionario Kano}\label{tab:kano-caract}
+\begin{tabular}{|l|l|L{9.5cm}|}
+\hline
+\textbf{Código} & \textbf{Requisito} & \textbf{Característica}\\
+\hline
+K1 & RF-02 & Ver el precio de cada examen al hacer la orden\\
+\hline
+K2 & RF-04 & Etiqueta con código de barras en cada muestra\\
+\hline
+K3 & RF-06 & Aviso cuando la muestra fue rechazada y hay que repetir la toma\\
+\hline
+K4 & RF-08 & Valores de referencia junto a cada resultado\\
+\hline
+K5 & RF-09 & Aviso inmediato al bioquímico si hay un valor crítico\\
+\hline
+K6 & RF-12 & Historial de exámenes del paciente\\
+\hline
+K7 & RNF-01 & Ver el resultado en menos de 3 segundos\\
+\hline
+K8 & RNF-06 & Registrar una orden en menos de 2 minutos\\
+\hline
+\end{tabular}
+\end{table}
+
+\pendiente{Aplicación a 5 personas reales, tabulación de respuestas y clasificación con la tabla de evaluación.}
 
 % ------------------------------------------------------------------
 \section{Votación ponderada}
 % ------------------------------------------------------------------
-\pendiente{Reparto de 100 puntos de 3 personas, puntaje total y orden resultante.}
+Para la votación ponderada, cada participante reparte 100 puntos entre los 20 requisitos de la Tabla~\ref{tab:requisitos}, explicados en lenguaje sencillo; puede dar 0 a los que no considere importantes y la suma debe ser exactamente 100. El orden resultante se obtiene sumando los puntos de todos los participantes.
+
+\pendiente{Reparto de 100 puntos de 3 personas reales, puntaje total y orden resultante.}
 
 % ------------------------------------------------------------------
 \section{Comparación de los tres órdenes}
