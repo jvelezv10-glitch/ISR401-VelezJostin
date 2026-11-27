@@ -56,7 +56,7 @@
 % ------------------------------------------------------------------
 \section{Dominio}
 % ------------------------------------------------------------------
-\pendiente{Un párrafo: qué hace un laboratorio clínico, quiénes intervienen (paciente, médico, recepcionista, laboratorista, bioquímico) y por qué conviene priorizar los requisitos antes de construir una primera versión.}
+Un laboratorio clínico analiza muestras de sangre, orina y otros fluidos para que el médico confirme o descarte un diagnóstico. El proceso empieza cuando el médico pide los exámenes en una orden. El paciente la lleva al laboratorio, y la recepcionista la registra, le dice cuánto cuesta y cobra. Después el laboratorista toma la muestra, la etiqueta y la analiza. El bioquímico revisa los resultados y es el único que puede aprobarlos antes de que lleguen al paciente o al médico. En cada paso puede haber un error: una muestra confundida, una que no sirve o un valor crítico que nadie ve a tiempo. Cualquiera de estos errores afecta la salud de una persona. Por eso conviene priorizar. No todo se puede construir en la primera versión, y lo primero que se haga debe ser lo que evita esos errores y lo que la ley exige. Lo demás puede esperar a una segunda versión.
 
 % ------------------------------------------------------------------
 \section{Requisitos del sistema}
@@ -118,7 +118,31 @@ RNF-08 & Calidad (trazabilidad) & El sistema deberá guardar el 100\,\% de los c
 % ------------------------------------------------------------------
 \section{Fundamento de las tres técnicas}
 % ------------------------------------------------------------------
-\pendiente{Qué es MoSCoW, Kano y la votación ponderada, y qué criterio prioriza cada una~\cite{pohl2025,wiegers2013,ireb2026}.}
+\textbf{MoSCoW.} Es una técnica para ordenar requisitos en cuatro grupos~\cite{pohl2025,ireb2026}:
+
+\begin{itemize}
+\item \emph{Must}: lo que el sistema tiene que tener sí o sí.
+\item \emph{Should}: lo importante que puede esperar un poco.
+\item \emph{Could}: lo deseable si sobra tiempo.
+\item \emph{Won't}: lo que esta vez no se hace.
+\end{itemize}
+
+Una regla que se usa es que el \emph{Must} no pase del 60\,\% del esfuerzo total, para dejar margen si algo se complica. La clasificación la hace el equipo, así que MoSCoW mide lo que el equipo cree necesario según el alcance, las leyes y el presupuesto~\cite{wiegers2013}.
+
+\textbf{Modelo de Kano.} Lo propuso Noriaki Kano en 1984~\cite{kano1984}. A cada persona se le hacen dos preguntas por función: cómo se sentiría si el sistema la tiene y cómo se sentiría si no la tiene~\cite{binder2023}. Con la combinación de respuestas, cada función cae en una categoría:
+
+\begin{itemize}
+\item Obligatoria: si falta, molesta, y si está, nadie la agradece.
+\item Desempeño: mientras mejor funciona, más satisfecho queda el usuario.
+\item Atractiva: sorprende y gusta, pero si no está nadie la extraña.
+\item Indiferente: no cambia nada.
+\end{itemize}
+
+También existen las categorías Inversa (la función molesta en lugar de gustar) y Cuestionable (las dos respuestas se contradicen). Además se calculan dos coeficientes. El CS indica cuánto sube la satisfacción si la función existe, y el DS cuánta insatisfacción causa si falta. Kano mide cómo reacciona el usuario a cada función.
+
+\textbf{Votación de 100 puntos.} Cada persona reparte 100 puntos entre todos los requisitos y le da más puntos a lo que le parece más importante~\cite{wiegers2013}. Como los puntos son limitados, no se puede decir que todo es prioritario, y la persona tiene que escoger. Al sumar los puntos de todos sale un ranking. Esta técnica mide la importancia relativa que los usuarios le dan a cada requisito comparándolo con los demás.
+
+Uso las tres porque cada una mide algo distinto~\cite{yaseen2023,alsafadi2026}. MoSCoW muestra lo que yo decidí como analista, Kano cómo se sienten los usuarios y la votación qué valoran más. Cuando no coinciden, como pasó aquí, me toca revisar mi clasificación y justificar cada cambio.
 
 % ------------------------------------------------------------------
 \section{Clasificación MoSCoW}
@@ -230,29 +254,171 @@ K8 & RNF-06 & Registrar una orden en menos de 2 minutos\\
 \end{tabular}
 \end{table}
 
-\pendiente{Aplicación a 5 personas reales, tabulación de respuestas y clasificación con la tabla de evaluación.}
+El cuestionario se aplicó el 26 de noviembre de 2026 mediante un formulario de Google anónimo, sin correo, nombre ni cédula, con una pregunta inicial de consentimiento. Respondieron cinco personas: tres pacientes (K01 a K03), una persona que trabaja en un laboratorio clínico (K04) y un médico o personal de salud que pide exámenes (K05). Cada par de respuestas (funcional y disfuncional) se clasificó con la tabla de evaluación de Kano en A (atractiva), O (desempeño), M (obligatoria), I (indiferente), R (inversa) o Q (cuestionable). La categoría de cada característica es la más frecuente; en caso de empate se aplicó el orden M $>$ O $>$ A $>$ I. Además se calcularon los coeficientes de satisfacción $CS = (A+O)/(A+O+M+I)$ y de insatisfacción $DS = -(O+M)/(A+O+M+I)$. La Tabla~\ref{tab:kano-resultados} resume el resultado; las respuestas completas están en \texttt{datos/kano\_respuestas.csv} y el cálculo en \texttt{datos/calculos.py}.
+
+\begin{table}[htbp]
+\centering
+\caption{Clasificación de Kano por participante y categoría resultante}\label{tab:kano-resultados}
+{\small\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|l|c|c|}
+\hline
+\textbf{Cód.} & \textbf{Req.} & \textbf{K01} & \textbf{K02} & \textbf{K03} & \textbf{K04} & \textbf{K05} & \textbf{A} & \textbf{O} & \textbf{M} & \textbf{I} & \textbf{R} & \textbf{Q} & \textbf{Categoría} & \textbf{CS} & \textbf{DS}\\
+\hline
+K1 & RF-02 & O & O & R & I & I & 0 & 2 & 0 & 2 & 1 & 0 & Desempeño$^{*}$ & 0,50 & $-$0,50\\
+\hline
+K2 & RF-04 & I & M & I & M & M & 0 & 0 & 3 & 2 & 0 & 0 & Obligatoria & 0,00 & $-$0,60\\
+\hline
+K3 & RF-06 & O & O & O & M & O & 0 & 4 & 1 & 0 & 0 & 0 & Desempeño & 0,80 & $-$1,00\\
+\hline
+K4 & RF-08 & A & O & O & M & M & 1 & 2 & 2 & 0 & 0 & 0 & Obligatoria$^{*}$ & 0,60 & $-$0,80\\
+\hline
+K5 & RF-09 & M & O & O & M & M & 0 & 2 & 3 & 0 & 0 & 0 & Obligatoria & 0,40 & $-$1,00\\
+\hline
+K6 & RF-12 & A & A & A & O & O & 3 & 2 & 0 & 0 & 0 & 0 & Atractiva & 1,00 & $-$0,40\\
+\hline
+K7 & RNF-01 & I & A & A & I & A & 3 & 0 & 0 & 2 & 0 & 0 & Atractiva & 0,60 & 0,00\\
+\hline
+K8 & RNF-06 & O & A & A & O & I & 2 & 2 & 0 & 1 & 0 & 0 & Desempeño$^{*}$ & 0,80 & $-$0,40\\
+\hline
+\end{tabular}}
+
+\smallskip
+{\footnotesize $^{*}$ Empate 2 a 2: K1 entre O e I, K4 entre M y O, K8 entre O y A.}
+\end{table}
+
+\textbf{K6, historial (Atractiva).} Creo que pasa porque aquí casi nadie espera que el laboratorio se acuerde de uno. La gente se hace exámenes en distintos laboratorios según el precio o la cercanía, y los resultados viejos los guarda en una carpeta en la casa. Por eso, si el sistema muestra los exámenes anteriores ordenados, sorprende y gusta. Si no los muestra, nadie se queja, porque siempre ha sido así. A los profesionales sí les importa más, porque necesitan comparar valores, y eso explica los dos votos de Desempeño.
+
+\textbf{K2, código de barras (Obligatoria).} Yo lo había puesto en \emph{Should} porque lo vi como una mejora técnica frente a etiquetar a mano. Sobre todo el personal de salud y uno de los pacientes lo vieron de otra forma. El código de barras ya lo ven en la farmacia, en el supermercado y en casi cualquier laboratorio, así que lo dan por hecho. Además, el miedo de cualquier paciente es que le cambien la muestra y le entreguen el resultado de otra persona. Para ellos la etiqueta es lo mínimo para que eso no pase.
+
+\textbf{K3, aviso de muestra rechazada (Desempeño, $DS = -1{,}00$).} Si nadie le avisa, el paciente se entera cuando va a retirar el resultado, a veces dos o tres días después. Ahí tiene que volver, ir otra vez en ayunas, dejar que lo pinchen de nuevo y perder otra mañana de trabajo. Si el médico estaba esperando ese examen, también se retrasa el diagnóstico. Con eso tiene sentido que a los cinco les moleste que no exista.
 
 % ------------------------------------------------------------------
 \section{Votación ponderada}
 % ------------------------------------------------------------------
 Para la votación ponderada, cada participante reparte 100 puntos entre los 20 requisitos de la Tabla~\ref{tab:requisitos}, explicados en lenguaje sencillo; puede dar 0 a los que no considere importantes y la suma debe ser exactamente 100. El orden resultante se obtiene sumando los puntos de todos los participantes.
 
-\pendiente{Reparto de 100 puntos de 3 personas reales, puntaje total y orden resultante.}
+La votación se aplicó el 26 de noviembre de 2026 con un formulario de Google anónimo. Participaron tres personas con roles distintos: un paciente (V01), una persona que trabaja en un laboratorio clínico (V02) y una enfermera (V03). Se comprobó que cada reparto suma exactamente 100 puntos. La Tabla~\ref{tab:votacion} muestra los puntos de cada participante, el total y el puesto resultante; los requisitos con el mismo total comparten el puesto promedio.
+
+\begin{longtable}{|c|c|L{5.1cm}|c|c|c|c|c|}
+\caption{Resultado de la votación ponderada de 100 puntos}\label{tab:votacion}\\
+\hline
+\textbf{Puesto} & \textbf{ID} & \textbf{Requisito} & \textbf{V01} & \textbf{V02} & \textbf{V03} & \textbf{Total} & \textbf{MoSCoW}\\
+\hline
+\endfirsthead
+\hline
+\textbf{Puesto} & \textbf{ID} & \textbf{Requisito} & \textbf{V01} & \textbf{V02} & \textbf{V03} & \textbf{Total} & \textbf{MoSCoW}\\
+\hline
+\endhead
+1 & RF-09 & Aviso de valor crítico & 10 & 3 & 12 & \textbf{25} & Should\\
+\hline
+2 & RF-06 & Aviso de muestra rechazada & 8 & 8 & 7 & \textbf{23} & Should\\
+\hline
+3,5 & RF-01 & Registrar orden médica & 5 & 10 & 6 & \textbf{21} & Must\\
+\hline
+3,5 & RF-04 & Etiqueta con código de barras & 3 & 10 & 8 & \textbf{21} & Should\\
+\hline
+5 & RF-02 & Elegir exámenes del catálogo & 10 & 8 & 2 & \textbf{20} & Must\\
+\hline
+6,5 & RF-12 & Historial del paciente & 8 & 5 & 6 & \textbf{19} & Could\\
+\hline
+6,5 & RNF-06 & Orden en menos de 2 minutos & 7 & 10 & 2 & \textbf{19} & Won't\\
+\hline
+8,5 & RF-03 & Registrar pago & 5 & 10 & 2 & \textbf{17} & Should\\
+\hline
+8,5 & RF-08 & Valores de referencia & 8 & 2 & 7 & \textbf{17} & Should\\
+\hline
+11 & RF-11 & Entrega solo si está validado & 5 & 4 & 6 & \textbf{15} & Must\\
+\hline
+11 & RNF-02 & Disponibilidad del 99\,\% & 3 & 8 & 4 & \textbf{15} & Won't\\
+\hline
+11 & RNF-07 & Cero resultados sin validar & 6 & 3 & 6 & \textbf{15} & Must\\
+\hline
+13,5 & RF-05 & Registrar quién tomó la muestra & 2 & 4 & 6 & \textbf{12} & Must\\
+\hline
+13,5 & RF-07 & Ingresar resultados & 3 & 3 & 6 & \textbf{12} & Must\\
+\hline
+15,5 & RF-10 & Validación del bioquímico & 3 & 2 & 6 & \textbf{11} & Must\\
+\hline
+15,5 & RNF-01 & Resultado en menos de 3 s & 5 & 4 & 2 & \textbf{11} & Could\\
+\hline
+17 & RNF-05 & Cifrado AES y TLS & 4 & 1 & 4 & \textbf{9} & Must\\
+\hline
+18 & RNF-03 & Bloqueo tras 3 intentos & 2 & 2 & 3 & \textbf{7} & Should\\
+\hline
+19 & RNF-08 & Trazabilidad de etapas & 2 & 2 & 2 & \textbf{6} & Won't\\
+\hline
+20 & RNF-04 & Registro de quién abre resultados & 1 & 1 & 3 & \textbf{5} & Could\\
+\hline
+\end{longtable}
 
 % ------------------------------------------------------------------
 \section{Comparación de los tres órdenes}
 % ------------------------------------------------------------------
-\pendiente{Coincidencias, discrepancias y su explicación; correlación de Spearman entre MoSCoW y votación.}
+Para medir cuánto se parecen el orden de MoSCoW y el de la votación se usó la correlación de rangos de Spearman. A cada requisito se le asignó un rango en la votación (1 = más puntos) y otro en MoSCoW (\emph{Must} primero, \emph{Won't} al final); como hay muchos empates, los rangos empatados reciben su promedio y $\rho$ se calcula como la correlación de Pearson entre los dos rangos:
+\[
+\rho = \frac{\sum_i (x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_i (x_i-\bar{x})^2 \, \sum_i (y_i-\bar{y})^2}}
+\]
+Con los 20 requisitos se obtiene $\rho = 0{,}07$, un valor casi nulo: el orden de MoSCoW y el de la votación casi no coinciden. Los rangos, las diferencias $d_i$ y $d_i^2$ están en \texttt{datos/votacion\_totales.csv}.
+
+\textbf{RF-09, RF-06 y RF-04 en los primeros lugares.} Yo armé el MoSCoW pensando en el flujo del sistema: sin orden, pago y resultados no hay sistema, y lo demás lo dejé como \emph{Should}. La gente votó pensando en lo que le puede salir mal a su salud. Una alerta por un valor crítico puede salvar a alguien, el aviso de muestra mala evita volver y el código de barras evita confusiones. Son funciones que ellos ven como protección, y por eso les dieron tantos puntos.
+
+\textbf{RNF-05 y RF-10 siguen en \emph{Must} aunque tuvieron pocos votos.} La votación mide lo que la gente valora. No mide lo que el laboratorio está obligado a cumplir. Nadie vota por el cifrado porque nadie lo ve, y asume que sus datos ya están protegidos. La LOPDP considera los datos de salud como datos sensibles y obliga a protegerlos~\cite{lopdp2021}, así que, si se filtra un resultado, el laboratorio responde ante la ley. Con RF-10 pasa algo parecido: si cualquier usuario pudiera aprobar resultados, un error llegaría directo al paciente. Que solo el bioquímico valide es una cuestión de seguridad del paciente y de responsabilidad profesional. Los mantengo en \emph{Must} aunque no sean populares.
+
+\textbf{RNF-06, orden en menos de 2 minutos (6.\textsuperscript{o} lugar).} Lo puse en \emph{Won't} porque pensé que la rapidez de recepción era un detalle y que costaba medirla. Me equivoqué. Los pacientes y la persona que trabaja en el laboratorio le dieron puntos porque es lo que viven cada vez que van: la fila. Es lo primero que notan del laboratorio.
 
 % ------------------------------------------------------------------
 \section{Decisión para la primera versión}
 % ------------------------------------------------------------------
-\pendiente{Lista priorizada final y justificación de lo que queda fuera.}
+A partir de Kano y de la votación, hago estos cambios a la clasificación MoSCoW:
+
+\begin{itemize}
+\item \textbf{RF-09 sube de \emph{Should} a \emph{Must}.} Salió primero en la votación y Obligatoria en Kano, y está ligada a la seguridad del paciente.
+\item \textbf{RF-04 sube de \emph{Should} a \emph{Must}.} Fue Obligatoria en Kano y quedó entre las más votadas. Además, la trazabilidad de la muestra (RF-05 y RNF-08) depende de que cada tubo tenga su etiqueta.
+\item \textbf{RF-06 se queda en \emph{Should}}, pero queda primera en la lista para la siguiente entrega.
+\item \textbf{RNF-06 pasa de \emph{Won't} a \emph{Could}.}
+\item \textbf{RF-08 se queda en \emph{Should}.} En Kano salió empatado 2 a 2 entre Obligatoria y Desempeño, así que no da una señal tan clara como RF-04, que ganó solo como Obligatoria y además estuvo entre los más votados. Para la primera versión, los valores normales pueden ir fijos en la hoja de resultados, como puse en mi justificación. Así el paciente y el médico los ven igual, y el cálculo automático por edad y sexo queda para después.
+\end{itemize}
+
+La Tabla~\ref{tab:decision} muestra la clasificación final. Con los dos requisitos nuevos, el grupo \emph{Must} pasa de 20 a 27 puntos de esfuerzo, es decir, el 46,6\,\% del total, y sigue por debajo del límite del 60\,\%. Con esta clasificación, la correlación de Spearman con la votación sube de $0{,}07$ a $0{,}26$: la priorización se acerca a lo que valoran las personas, pero sin copiar la votación, porque RNF-05 y RF-10 se mantienen en \emph{Must} por la ley y por la seguridad del paciente. RNF-02 y RNF-08 quedan fuera de la primera versión por las razones de la Tabla~\ref{tab:moscow}.
+
+\begin{table}[htbp]
+\centering
+\caption{Clasificación final para la primera versión}\label{tab:decision}
+\begin{tabular}{|l|L{8.4cm}|c|c|}
+\hline
+\textbf{Categoría} & \textbf{Requisitos} & \textbf{Esfuerzo} & \textbf{\% del esfuerzo}\\
+\hline
+Must & RF-01, RF-02, RF-04, RF-05, RF-07, RF-09, RF-10, RF-11, RNF-05, RNF-07 & 27 & 46,6\,\%\\
+\hline
+Should & RF-03, RF-06, RF-08, RNF-03 & 10 & 17,2\,\%\\
+\hline
+Could & RF-12, RNF-01, RNF-04, RNF-06 & 12 & 20,7\,\%\\
+\hline
+Won't & RNF-02, RNF-08 & 9 & 15,5\,\%\\
+\hline
+\textbf{Total} & & \textbf{58} & \textbf{100,0\,\%}\\
+\hline
+\end{tabular}
+\end{table}
 
 % ------------------------------------------------------------------
 \section{Declaración de uso de inteligencia artificial}
 % ------------------------------------------------------------------
-\pendiente{Herramienta, versión, propósito y cómo se verificó.}
+\textbf{Herramienta.} Claude Opus 5.5 (Anthropic), usado mediante la aplicación Claude Code entre el 25 y el 28 de noviembre de 2026.
+
+\textbf{Para qué la usé.}
+\begin{itemize}
+\item Crear los dos formularios de Google (Kano y votación) a partir de las preguntas del instrumento, con un script de Google Apps Script que ejecuté desde mi cuenta institucional.
+\item Dar formato al documento en \LaTeX{}: carátula, tablas, ajuste de anchos de columna y compilación.
+\item Pasar las respuestas de los formularios a los archivos CSV de \texttt{datos/}, sin datos personales, y escribir el script \texttt{datos/calculos.py} que clasifica las respuestas de Kano, suma la votación y calcula la correlación de Spearman.
+\item Redactar los párrafos que describen cómo se aplicaron los instrumentos y cómo se calculó Spearman, y las tablas de resultados de las Secciones~5 a 8.
+\item Buscar artículos recientes y comprobar sus datos (autores, revista, año, páginas y DOI) en Crossref, J-STAGE y arXiv.
+\item Revisar mi redacción. De esa revisión acepté tres cambios: precisar que en K2 la categoría Obligatoria vino sobre todo del personal de salud y de un paciente, describir al participante V02 como persona que trabaja en el laboratorio, y añadir la definición de las categorías Inversa y Cuestionable.
+\end{itemize}
+
+\textbf{Lo que hice yo.} Escribí los 20 requisitos, la clasificación MoSCoW con su esfuerzo y sus justificaciones, el párrafo del dominio, el fundamento de las tres técnicas, el análisis de los resultados de Kano, la comparación entre MoSCoW y la votación, y la decisión final. También conseguí a los participantes y les envié los formularios.
+
+\textbf{Cómo lo verifiqué.} Revisé que los totales de la votación coincidieran con el resumen que muestra Google Forms y que cada reparto sumara 100 puntos; comprobé que las categorías de Kano de la Tabla~\ref{tab:kano-resultados} correspondieran a las respuestas; y leí el PDF completo antes de entregarlo. Los datos de los participantes son los que registró Google Forms y no fueron modificados.
 
 \bibliographystyle{IEEEtran}
 \bibliography{referencias}
